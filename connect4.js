@@ -1,18 +1,18 @@
 const player1 = "Mario";
 const player2 = "Peach";
 const currPlayer = player1;
- 
+
 const gameOver = false;
 let board;
- 
+
 const rows = 6;
 const columns = 7;
 const currColums = [];
- 
+
 window.onload = function() {
     setGame();
 };
- 
+
 function setGame() {
     board = [];
     columns = [5,5,5,5,5,5,5]
@@ -28,4 +28,30 @@ function setGame() {
             }
         board.push(row);
     }
-};
+}
+
+function setPiece() {
+    if (gameOver) {
+        return;
+    } 
+    let coords = this.id.split("-");
+    let r = parseInt(coords[0]);
+    let c = parseInt(coords[1]);
+    r = currColums[c];
+
+    if (r < 0) {
+        return;
+    }
+    board[r][c] = currPlayer;
+    let tile = document.getElementById(r.toString() + "-" + c.toString());
+    if (currPlayer == player1) {
+        tile.classList.add("mario");
+        currPlayer = player2;
+    } else {
+        tile.classList.add("peach");
+        currPlayer = player1;
+    }
+    r -= 1;
+    currColums[c] = r;
+    checkWinner();
+}
