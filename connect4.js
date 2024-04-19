@@ -60,10 +60,10 @@ function togglePlayer() {
 }
 
 function checkForWin(r, c) {
-    const directions = [[1, 0], [0, 1], [1, 1], [-1, 1]]; // down, right, diagonal right-down, diagonal left-down
+    const directions = [[1, 0], [0, 1], [1, 1], [-1, 1]]; 
 
     for (let [dx, dy] of directions) {
-        let count = 1; // count the current piece
+        let count = 1; 
         let row = r + dx;
         let col = c + dy;
 
@@ -90,6 +90,6 @@ function checkForWin(r, c) {
 
 function setWinner(r, c) {
     let winner = document.getElementById("winner");
-    winner.innerText = `${currPlayer} Wins`;
+    winner.innerText = `${currPlayer} Wins!`;
     gameOver = true;
 }

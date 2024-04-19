@@ -8,6 +8,8 @@
 body {
     font-family: 'Arial', sans-serif;
     text-align: center;
+    background-image: url("img/background.jpg");
+    background-size: auto ;
 }
 
 #board {
@@ -32,8 +34,14 @@ body {
 
 .mario {
     background-image: url("img/Mario.png");
+    background-size: 5rem;
+    background-position: 50%;
 }
 
 .peach {
     background-image: url("img/Peach.png");
+    background-size: 5rem;
+    background-position: 50%;
+
+
 }
