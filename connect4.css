@@ -8,8 +8,12 @@
 body {
     font-family: 'Arial', sans-serif;
     text-align: center;
-    background-image: url("img/background.jpg");
-    background-size: auto ;
+    background-color: black;
+    background-size: 100% ;
+}
+
+h1, h2 {
+    color: white;
 }
 
 #board {
@@ -42,6 +46,29 @@ body {
     background-image: url("img/Peach.png");
     background-size: 5rem;
     background-position: 50%;
-
-
 }
+.sonic {
+    background-image: url("img/sonic.png");
+    background-size: 5rem;
+    background-position: 50%;
+}
+
+.luigi {
+    background-image: url("img/luigi.png");
+    background-size: 5rem;
+    background-position: 50%;
+}
+
+.bowser {
+    background-image: url("img/bowser.png");
+    background-size: 5rem;
+    background-position: 50%;
+}
+
+.yoshi {
+    background-image: url("img/yoshi.png");
+    background-size: 5rem;
+    background-position: 50%;
+}
+
+

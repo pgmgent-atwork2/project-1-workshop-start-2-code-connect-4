@@ -1,15 +1,13 @@
-const players = {
-    player1: "Mario",
-    player2: "Peach"
-};
+const allPlayers = ["Mario", "Peach", "Luigi", "Yoshi", "Sonic", "Bowser"]; 
 
-let currPlayer = players.player1;
-
+let playersPerRound = 2; 
 let gameOver = false;
 let board;
 const rows = 5;
 const columns = 6;
 let currColumns = Array(columns).fill(rows - 1);
+let currPlayers = []; 
+let currentPlayerIndex = 0; 
 
 window.onload = function() {
     setGame();
@@ -26,6 +24,7 @@ function setGame() {
             document.getElementById("board").append(tile);
         }
     }
+    currPlayers = getRandomPlayers(playersPerRound);
 }
 
 function setPiece() {
@@ -39,7 +38,7 @@ function setPiece() {
 
     r = currColumns[c]--;
 
-    board[r][c] = currPlayer;
+    board[r][c] = currPlayers[currentPlayerIndex];
 
     let tileId = r.toString() + "-" + c.toString();
     let tile = document.getElementById(tileId);
@@ -49,14 +48,14 @@ function setPiece() {
         return;
     }
 
-    tile.classList.add(currPlayer === players.player1 ? "mario" : "peach");
+    tile.classList.add(currPlayers[currentPlayerIndex].toLowerCase());
 
     if (checkForWin(r, c)) setWinner(r, c);
     else togglePlayer();
 }
 
 function togglePlayer() {
-    currPlayer = (currPlayer === players.player1) ? players.player2 : players.player1;
+    currentPlayerIndex = (currentPlayerIndex + 1) % playersPerRound;
 }
 
 function checkForWin(r, c) {
@@ -67,7 +66,7 @@ function checkForWin(r, c) {
         let row = r + dx;
         let col = c + dy;
 
-        while (row >= 0 && row < rows && col >= 0 && col < columns && board[row][col] === currPlayer) {
+        while (row >= 0 && row < rows && col >= 0 && col < columns && board[row][col] === currPlayers[currentPlayerIndex]) {
             count++;
             row += dx;
             col += dy;
@@ -76,7 +75,7 @@ function checkForWin(r, c) {
         row = r - dx;
         col = c - dy;
 
-        while (row >= 0 && row < rows && col >= 0 && col < columns && board[row][col] === currPlayer) {
+        while (row >= 0 && row < rows && col >= 0 && col < columns && board[row][col] === currPlayers[currentPlayerIndex]) {
             count++;
             row -= dx;
             col -= dy;
@@ -90,6 +89,15 @@ function checkForWin(r, c) {
 
 function setWinner(r, c) {
     let winner = document.getElementById("winner");
-    winner.innerText = `${currPlayer} Wins!`;
+    winner.innerText = `${currPlayers[currentPlayerIndex]} Wins!`;
     gameOver = true;
 }
+
+function getRandomPlayers(count) {
+    let shuffledPlayers = allPlayers.sort(() => Math.random() - 0.5);
+    return shuffledPlayers.slice(0, count);
+}
+
+
+
+
