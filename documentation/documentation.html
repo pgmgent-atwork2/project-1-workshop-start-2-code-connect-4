@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/prism/prism.css">
+    <link rel="stylesheet" href="documentation.css">
+    <link rel="stylesheet" href="/documentation/documentation.html">
+    <title>Documentation Connect-4</title>
+ 
+</head>
+<body>
+    <h1>START TO CODE</h1>
+    <p>We gaan een mini game bouwen namelijk 4 op een rij</p>
+    <p> Hiermee kan je naar de spel gaan  <a href="../connect4.html">Connect 4 Game</a></p>
+    <img src ="../img/4opeenrijwinner.png" alt="Screenshot Connect-4">
+    <p>Daarvoor hebben we drie codetalen nodig</p>
+    <ul>
+        <li><strong>HTML</strong> </li>
+        <li><strong>CSS</strong></li>
+        <li><strong>JavaScript</strong></li>
+    </ul>
+   
+    <h2>STAP 1 - MAPPENSTRUCTUUR</h2>
+    <p>We hebben een code-editor nodig, namelijk <a href="https://code.visualstudio.com/" target="_blank" >Visual Studio Code</a>.</p>
+    <ul>
+        <li>Maak een nieuwe map aan (bijvoorbeeld op je bureaublad) en geef deze de naam "connect4".</li>
+        <li>Open het programma <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> en open de map die je zojuist hebt aangemaakt.</li>
+        <li>Installeer de live server extensie in Visual Studio Code</li>
+        <li><img src="/img/liveserver.png" alt="Visiual Studio Code Live Server"></li>
+        <li> Dit moet jouw mappenstructuur zijn</li>
+        <li> <img src="/img/vscode-mapping.png" alt=""></li>
+        <li>Start de live server door rechtsonder de blauwe balk te klikken op <strong>Go Live</strong>
+            Jouw standaard browser zal nu gestart worden en je zal een blanco webpagina zien!</li>
+        <li><strong>HEEL VEEL SUCCES</strong></li>
+    </ul>
+ 
+    <h2>STAP 2 - HTML & CSS</h2>
+    <p>Tijd om te coderen, zodat we meer te zien krijgen dan een witte webpagina!</p>
+    <ul>
+        <li>Kopieer onderstaande code in jouw connect4.html-bestand. Bewaar vervolgens dat bestand.</li>
+    <details class="white"> 
+        <summary>
+            Dit is de HTML code 
+        </summary>
+
+            <pre>
+                <code class="language-html">
+                    &lt;DOCTYPE html&gt;
+                    &lt;html lang="en"&gt;
+                    &lt;head&gt;
+                        &lt;meta charset="UTF-8"&gt;
+                        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                        &lt;title&gt; 4 Op Een Rij&lt;/title&gt;
+                        &lt;link rel="stylesheet" href="connect4.css"&gt;
+                    &lt;/head&gt;
+                    
+                    
+                    &lt;body&gt;
+                        &lt;h1&gt; 4 Op een rij &lt;/h1&gt;
+                        &lt;h2 id="winner"&gt;&lt;/h2&gt;
+                        &lt;div id="board"&gt;&lt;/div&gt;
+                    
+                    &lt;script src="connect4.js"&gt;&lt;/script&gt;
+                    &lt;/body&gt;
+                    &lt;/html&gt;
+                </code>
+            </pre>
+</details>
+    </ul>
+    <p>Dit is een basis-structuur waarin we verder werken.</p>
+    <ul>
+        <li>Kopieer onderstaande code in jouw connect4.css-bestand. Bewaar vervolgens dat bestand.</li>
+        <details class="white"> 
+            <summary>
+                Dit is de CSS code 
+            </summary>
+    
+                <pre>
+                    <code class="language-css">
+                        :root {
+                            --spacing-hw: 4.375rem;
+                            --background-color-board: hsl(240, 100%, 50%);
+                            --background-color-border: hsl(240, 100%, 25%);
+                            --border-width: .625rem;
+                        }
+                        
+                        body {
+                            font-family: 'Arial', sans-serif;
+                            text-align: center;
+                            background-color: black;
+                            background-size: 100% ;
+                        }
+                        
+                        h1, h2 {
+                            color: white;
+                        }
+                        
+                        #board {
+                            height: 540px;
+                            width: 630px;
+                            background-color: var(--background-color-board);
+                            border: var(--border-width) solid var(--background-color-border);
+                            margin: 0 auto;
+                            display: flex;
+                            flex-wrap: wrap;
+                        }
+                        
+                        .tile {
+                            height: var(--spacing-hw);
+                            width: var(--spacing-hw);
+                            background-color: hsl(0, 0%, 100%);
+                            border-radius: 50%;
+                            margin: 7px;
+                            border: var(--border-width) solid var(--background-color-border);
+                        }
+                        
+                        
+                        .mario {
+                            background-image: url("img/Mario.png");
+                            background-size: 5rem;
+                            background-position: 50%;
+                        }
+                        
+                        .peach {
+                            background-image: url("img/Peach.png");
+                            background-size: 5rem;
+                            background-position: 50%;
+                        }
+                        .sonic {
+                            background-image: url("img/sonic.png");
+                            background-size: 5rem;
+                            background-position: 50%;
+                        }
+                        
+                        .luigi {
+                            background-image: url("img/luigi.png");
+                            background-size: 5rem;
+                            background-position: 50%;
+                        }
+                        
+                        .bowser {
+                            background-image: url("img/bowser.png");
+                            background-size: 5rem;
+                            background-position: 50%;
+                        }
+                        
+                        .yoshi {
+                            background-image: url("img/yoshi.png");
+                            background-size: 5rem;
+                            background-position: 50%;
+                        }
+                        
+                    </code>
+                </pre>
+    </details>
+    </ul>
+    <p>Dit bevat alvast een aantal basisstijlen die we later zullen nodig hebben voor de look & feel van onze app.</p>
+    <ul>
+        <li>2.4 Laten we het eens van kleur veranderen. Hiervoor moeten we de kleurwaarde veranderen. Zoek naar background-color: #07192f; en verander #07192f; naar bijvoorbeeld tomato; De achtergrond is nu tomaatkleurig</li>
+        <li>laten we nu de achtergrond terug zetten door ctrl + z te doen in onze css-bestand</li>
+    </ul>
+ 
+<h2>STAP 3 - INTERACTIVITEIT MET JAVASCRIPT</h2>
+<ul>
+    <li>3.1 Eerst en vooral moeten we de link leggen naar het JavaScript-bestand, + naar een JavaScript Library P5
+        (Wellicht zal deze regel al toegevoegd zijn als je de html-code kopieerde).</li>
+        <h2> <li>Nu gaan we de javascript tonen per deel</li></h2>
+        <details class="white"> 
+            <summary>
+                <h2>Initialisatievariabelen</h2>
+                Dit gedeelte initialiseert variabelen die nodig zijn voor het spel, zoals een lijst van alle spelers, het aantal spelers per ronde, of het spel al voorbij is (gameOver), het bord, het aantal rijen en kolommen, de huidige kolommen voor het plaatsen van stukken, de huidige spelers en de index van de huidige speler.
+            </summary>
+                <pre>
+                    <code class="language-javascript">
+                        const allPlayers = ["Mario", "Peach", "Luigi", "Yoshi", "Sonic", "Bowser"];
+let playersPerRound = 2;
+let gameOver = false;
+let board;
+const rows = 5;
+const columns = 6;
+let currColumns = Array(columns).fill(rows - 1);
+let currPlayers = [];
+let currentPlayerIndex = 0;
+
+                    </code>
+                </pre>
+    </details>
+    <details class="white"> 
+        <summary>
+            <h2>Setgame-functie</h2>
+            Hier wordt de window.onload-functie gebruikt om ervoor te zorgen dat de setGame-functie wordt uitgevoerd zodra de pagina is geladen. De setGame-functie initialiseert het speelbord door tegels te maken en event listeners toe te wijzen. Ook kiest het willekeurig spelers voor de huidige ronde.
+        </summary>
+
+            <pre>
+                <code class="language-javascript">
+                    window.onload = function() {
+                        setGame();
+                    };
+                    
+                    function setGame() {
+                        board = Array(rows).fill(null).map(() => Array(columns).fill(' '));
+                        for (let r = 0; r < rows; r++) {
+                            for (let c = 0; c < columns; c++) {
+                                let tile = document.createElement("div");
+                                tile.id = r.toString() + "-" + c.toString();
+                                tile.classList.add("tile");
+                                tile.addEventListener("click", setPiece);
+                                document.getElementById("board").append(tile);
+                            }
+                        }
+                        currPlayers = getRandomPlayers(playersPerRound);
+                    }
+
+                </code>
+            </pre>
+</details>
+<details class="white"> 
+    <summary>
+        <h2>Setpiece-functie</h2>
+        Deze functie plaatst een stuk op het speelbord wanneer een tegel wordt geklikt. Het controleert ook of het spel voorbij is en schakelt naar de volgende speler.
+    </summary>
+        <pre>
+            <code class="language-javascript">
+                function setPiece() {
+                    if (gameOver) return;
+                
+                    let coords = this.id.split("-");
+                    let r = parseInt(coords[0]);
+                    let c = parseInt(coords[1]);
+                
+                    if (currColumns[c] < 0) return;
+                
+                    r = currColumns[c]--;
+                
+                    board[r][c] = currPlayers[currentPlayerIndex];
+                
+                    let tileId = r.toString() + "-" + c.toString();
+                    let tile = document.getElementById(tileId);
+                
+                    if (!tile) {
+                        console.error("Tile element not found!");
+                        return;
+                    }
+                
+                    tile.classList.add(currPlayers[currentPlayerIndex].toLowerCase());
+                
+                    if (checkForWin(r, c)) setWinner(r, c);
+                    else togglePlayer();
+                }
+            </code>
+        </pre>
+</details>
+<details class="white"> 
+    <summary>
+        <h2>togglePlayer-functie</h2>
+        Deze functie wisselt tussen spelers, zodat na elke zet de volgende speler aan de beurt is.
+    </summary>
+        <pre>
+            <code class="language-javascript">
+                function togglePlayer() {
+                    currentPlayerIndex = (currentPlayerIndex + 1) % playersPerRound;
+                }
+            </code>
+        </pre>
+</details>
+<details class="white"> 
+    <summary>
+        <h2>checkForWin-functie</h2>
+        Hier wordt gecontroleerd of de speler een winnende combinatie heeft gemaakt. Het controleert horizontale, verticale en diagonale lijnen van stukken.
+    </summary>
+        <pre>
+            <code class="language-javascript">
+                function checkForWin(r, c) {
+                    const directions = [[1, 0], [0, 1], [1, 1], [-1, 1]]; 
+                
+                    for (let [dx, dy] of directions) {
+                        let count = 1; 
+                        let row = r + dx;
+                        let col = c + dy;
+                
+                        while (row >= 0 && row < rows && col >= 0 && col < columns && board[row][col] === currPlayers[currentPlayerIndex]) {
+                            count++;
+                            row += dx;
+                            col += dy;
+                        }
+                        row = r - dx;
+                        col = c - dy;
+
+                        while (row >= 0 && row < rows && col >= 0 && col < columns && board[row][col] === currPlayers[currentPlayerIndex]) {
+                            count++;
+                            row -= dx;
+                            col -= dy;
+                        }
+                
+                        if (count >= 4) return true;
+                    }
+                    return false;
+                }
+            </code>
+        </pre>
+</details>
+<details class="white"> 
+    <summary>
+        <h2>setWinner-functie</h2>
+        Als er een winnaar is gevonden, wordt deze functie aangeroepen om de winnaar weer te geven en het spel te beëindigen.
+    </summary>
+        <pre>
+            <code class="language-javascript">
+                function setWinner(r, c) {
+                    let winner = document.getElementById("winner");
+                    winner.innerText = `${currPlayers[currentPlayerIndex]} Wins!`;
+                    gameOver = true;
+                }
+            </code>
+        </pre>
+</details>
+<details class="white"> 
+    <summary>
+        <h2>getRandomPlayers-functie</h2>
+        Deze functie selecteert willekeurig een aantal spelers voor de huidige ronde, zodat elke ronde verschillende spelers kan hebben.
+    </summary>
+        <pre>
+            <code class="language-javascript">
+                function getRandomPlayers(count) {
+                    let shuffledPlayers = allPlayers.sort(() => Math.random() - 0.5);
+                    return shuffledPlayers.slice(0, count);
+                }
+            </code>
+        </pre>
+</details>
+    </ul>
+    <script src="/prism/prism.js"></script>
+</body>
+</html>

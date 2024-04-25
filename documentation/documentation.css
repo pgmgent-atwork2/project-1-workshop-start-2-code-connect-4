@@ -1,0 +1,81 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: black;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.white {
+    color: white;
+}
+
+h1, h2, p, li {
+    color: white;
+    & a {
+        color: white;
+    }
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+ul {
+    text-align: center; /* lijstitems centreren */
+    list-style-type: none;
+    padding: 0;
+    display: inline-block; /* om het centrum uit te lijnen */
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+.details {
+    text-align: left;
+}
+
+.details summary {
+    cursor: pointer;
+}
+
+.details pre {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+.details code {
+    display: block;
+}
+
+.details code.language-html,
+.details code.language-css {
+    color: white;
+}
+
+.details code.language-css {
+    text-align: left;
+}
+
+.details code.language-html {
+    text-align: left;
+}
+
+.details code.language-js {
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+}
